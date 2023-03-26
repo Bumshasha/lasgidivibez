@@ -33,53 +33,65 @@
                                     $servername = "localhost";
                                     $dbname = 'lasgidi';
                                     $username = "root";
-                                    $password = "Bumshaha@gidi";
-
-                                    $mysqli = new mysqli($servername, $username, $password, $dbname);
-                                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                        // collect value of input field
-
-                                        $email = $_POST['email'];
-
-                                        $passw = $_POST['password'];
-
-                                        // if (empty($email) || empty($passw)) {
-                                        //     echo "No Blank Fields";
-                                        // } else {
-                                        /* create a prepared statement */
-
-                                        $stmt = "select * from user where email='$email'";
-                                        $result = $mysqli->query($stmt);
-                                        // print_r($result);
-
-                                        /* fetch value */
-                                        if ($result) {
-
-
-                                            // Free result set
-                                            $data = $result->fetch_all(MYSQLI_ASSOC);
-                                            echo $data[0] . 'hello';
-                                            // Free result set
-                                            $result->free_result();
-
-
-                                            // $mysqli->close();
-
-                                            $jdata = json_encode($data);
-                                            if ($data[0]['password'] === md5($passw)) {
-                                                $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $data[0][3] . ' ' . $data[0][4], "role" =>  $data[0][6], "id" => $$data[0][0])));
-                                                $_SESSION['fullname'] = $data[0][3] . ' ' . $data[0][4];
-                                                $_SESSION['id'] = $data[0][0];
-                                                $_SESSION['role'] = $data[0][5];
-                                                // echo ($_SESSION['fullname']);
-                                                header('Location: index.php');
-                                            } else {
-                                                $response = json_encode(array("message" =>  "failed to login", "status" => 404));
-                                                echo ("Wrong credentials");
-                                            }
-                                        }
-                                        // }
+                                    $password = "@Edmund123";
+                                    try {
+                                        $mysqli = new mysqli($servername, $username, $password, $dbname);
+                                    } catch (\Throwable $th) {
+                                        echo $th;
                                     }
+
+                                    try {
+
+                                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                            // collect value of input field
+
+                                            $email = $_POST['email'];
+
+                                            $passw = $_POST['password'];
+
+                                            // if (empty($email) || empty($passw)) {
+                                            //     echo "No Blank Fields";
+                                            // } else {
+                                            /* create a prepared statement */
+
+                                            $stmt = "select * from user where email='$email'";
+                                            $result = $mysqli->query($stmt);
+                                            // print_r($result);
+
+                                            /* fetch value */
+                                            if ($result) {
+
+
+                                                // Free result set
+                                                $data = $result->fetch_all(MYSQLI_ASSOC);
+                                                // echo $data[0] . 'hello';
+                                                // Free result set
+                                                $result->free_result();
+
+
+                                                // $mysqli->close();
+
+                                                $jdata = json_encode($data);
+                                                if ($data[0]['password'] === md5($passw)) {
+
+                                                    // $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $data[0][3] . ' ' . $data[0][4], "role" =>  $data[0][6], "id" => $$data[0][0])));
+                                                    $_SESSION['fullname'] = $data[0]['firstname'] . ' ' . $data[0]['lastname'];
+                                                    $_SESSION['id'] = $data[0]['id'];
+                                                    $_SESSION['role'] = $data[0]['role'];
+                                                    // echo ($_SESSION['fullname']);
+                                                    header('Location: index.php');
+                                                } else {
+                                                    $response = json_encode(array("message" =>  "failed to login", "status" => 404));
+                                                    echo ("Wrong credentials");
+                                                }
+                                            }
+                                            // }
+                                        }
+                                    } catch (\Throwable $th) {
+                                        echo ($th);
+                                    }
+
+
                                     ?>
                                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
                                         <div class="form-floating mb-3">
@@ -95,7 +107,7 @@
                                             <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="password.html">Forgot Password?</a>
+                                            <a class="small" href="index.php">Home</a>
 
                                         </div>
                                         <div class="card-footer text-center py-3">

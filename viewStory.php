@@ -17,54 +17,18 @@
 <body class="bg_image">
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="index.html">Lasgidi Vibez</a>
+        <div class="container nav justify-content-center">
+            <a class="navbar-brand" href="#!">Lasgidi Vibez</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb--20 mb-lg-0 ">
+
+
                     <?php
-                    if ($_SESSION['fullname']) {
-                        echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                About
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Terms & Conditions</a></li>
-                                <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Community
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="category.php?category=tourist">Find a Tourist Site</a></li>
-                                <li><a class="dropdown-item" href="category.php?category=reading">Free Reading Club</a></li>
-
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                What To Do In Lagos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="category.php?category=the_lagos_experience">My Lagos Experience</a></li>
-                                <li><a class="dropdown-item" href="category.php?category=eko_ile">Eko Ile</a></li>
-                                <li><a class="dropdown-item" href="category.php?category=culture">Culture</a></li>
-
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
-                            </ul>
-                        </li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="admin/index.php">Dashboard</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="admin/logout.php">Logout</a></li>';
-                    } else {
-                        echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                    try {
+                        $fullname = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : null;
+                        if ($fullname) {
+                            echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 About
@@ -101,9 +65,61 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
+                             
+
                         </li>';
-                        echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Register</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
+                            echo '<form action="allStories.php"  role="search">
+                        <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                         </form>';
+                            echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
+                        } else {
+                            echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Terms & Conditions</a></li>
+                                <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Community
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="category.php?category=tourist">Find a Tourist Site</a></li>
+                                <li><a class="dropdown-item" href="category.php?category=reading">Free Reading Club</a></li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                What To Do In Lagos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="category.php?category=the_lagos_experience">My Lagos Experience</a></li>
+                                <li><a class="dropdown-item" href="category.php?category=eko_ile">Eko Ile</a></li>
+                                <li><a class="dropdown-item" href="category.php?category=culture">Culture</a></li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
+                            </ul>
+                            
+   
+
+                        </li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Become a writer</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
+                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"></li>';
+                        }
+                    } catch (\Throwable $th) {
                     }
                     ?>
 
@@ -118,7 +134,7 @@
             $servername = "localhost";
             $dbname = 'lasgidi';
             $username = "root";
-            $password = "Bumshaha@gidi";
+            $password = "@Edmund123";
 
             $mysqli = new mysqli($servername, $username, $password, $dbname);
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -139,7 +155,7 @@
                     $servername = "localhost";
                     $dbname = 'lasgidi';
                     $username = "root";
-                    $password = "Bumshaha@gidi";
+                    $password = "@Edmund123";
 
                     $mysqli = new mysqli($servername, $username, $password, $dbname);
                     /* create a prepared statement */

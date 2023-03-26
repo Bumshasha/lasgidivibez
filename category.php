@@ -65,9 +65,12 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
-                            
+                             
 
                         </li>';
+                            echo '<form action="allStories.php"  role="search">
+                        <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                         </form>';
                             echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                         } else {
@@ -109,15 +112,15 @@
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
                             
-                     
+   
 
                         </li>';
-                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Register</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Become a writer</a></li>';
                             echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
+                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"></li>';
                         }
                     } catch (\Throwable $th) {
                     }
-
                     ?>
 
                 </ul>
@@ -152,7 +155,7 @@
             $servername = "localhost";
             $dbname = 'lasgidi';
             $username = "root";
-            $password = "Bumshaha@gidi";
+            $password = "@Edmund123";
 
             $mysqli = new mysqli($servername, $username, $password, $dbname);
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -208,6 +211,7 @@
                 <div class='col-md-4 mb-5'>
                     <div class='card h-100'>
                         <div class='card-body'>
+                            <img src="admin/images/<?= $row['image'] ?>" width='100' height='100'>
                             <h2 class='card-title'><?= $row['title'] ?></h2>
                             <p class='card-text'><?= $row['story'] ?></p>
                         </div>

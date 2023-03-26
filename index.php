@@ -65,12 +65,12 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
-                             <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                         </form>
+                           
 
                         </li>';
+                            echo '<form action="allStories.php"  role="search">
+                        <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                         </form>';
                             echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                         } else {
@@ -112,12 +112,12 @@
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
                             
-                        </form>
+   
 
                         </li>';
                             echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Become a writer</a></li>';
                             echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
-                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></li>';
+                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"></li>';
                         }
                     } catch (\Throwable $th) {
                     }
@@ -219,7 +219,7 @@
             var data = ''
             res.forEach(element => {
                 console.log('element', element)
-                data += "<div class='col-md-4 mb-5'><div class='card h-100'> <div class='card-body'><h2 class='card-title'>" + element['title'] + "</h2><p class='card-text'>" + element['story'] + "</p></div><div class='card-footer'><a class='btn btn-primary btn-sm' href='#!'>View</a></div></div></div>"
+                data += "<div class='col-md-4 mb-5'><div class='card h-100'> <div class='card-body'><img src=" + '/admin/images/' + element['image'] + " width='100' height='100'><h2 class='card-title'>" + element['title'] + "</h2><p class='card-text'>" + element['story'] + "</p></div><div class='card-footer'><a class='btn btn-primary btn-sm'  href=" + 'viewStory.php?id=' + element['id'] + ">View</a></div></div></div>"
             });
             var postiamge = document.getElementById('cards').outerHTML = data;
             var postiamge2 = document.getElementById('cards2').outerHTML = data;

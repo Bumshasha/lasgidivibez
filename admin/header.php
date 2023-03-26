@@ -86,6 +86,11 @@ if (!$_SESSION['fullname']) {
                             Frontend
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+                        <a class="nav-link collapsed" href="../logout.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Logout
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
 
                     </div>
                 </div>

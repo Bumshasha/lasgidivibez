@@ -32,7 +32,7 @@
                                         $servername = "localhost";
                                         $dbname = 'lasgidi';
                                         $username = "root";
-                                        $password = "Bumshaha@gidi";
+                                        $password = "@Edmund123";
 
                                         $mysqli = new mysqli($servername, $username, $password, $dbname);
                                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -129,7 +129,8 @@
                                     </form>
                                 </div>
                                 <div class="card-footer bg-white text-center py-3">
-                                    <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                    <div class="small"><a class="small" href="index.php">Home</a></div>
+                                    <div class="small"><a href="login.php">Have an account? Go to login</a></div>
                                 </div>
                             </div>
                         </div>

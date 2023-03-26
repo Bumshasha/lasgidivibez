@@ -64,12 +64,12 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
-                             <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                         </form>
+                           
 
                         </li>';
+                            echo '<form action="allStories.php"  role="search">
+                        <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                         </form>';
                             echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                         } else {
@@ -111,12 +111,12 @@
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
                             
-                        </form>
+   
 
                         </li>';
-                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Register</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Become a writer</a></li>';
                             echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
-                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></li>';
+                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search"></li>';
                         }
                     } catch (\Throwable $th) {
                     }
@@ -160,20 +160,19 @@
             $servername = "localhost";
             $dbname = 'lasgidi';
             $username = "root";
-            $password = "Bumshaha@gidi";
+            $password = "@Edmund123";
 
             $mysqli = new mysqli($servername, $username, $password, $dbname);
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                $category = $_POST['category'];
-                $publish = empty($_POST['publish']) ? 'null' : "'" . $_POST['publish'] . "'";
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (
                     empty($category) && empty($publish)
                 ) {
                     echo "select at least one filter";
                 } else {
 
-
+                    $category = $_POST['category'];
+                    $publish = empty($_POST['publish']) ? 'null' : "'" . $_POST['publish'] . "'";
                     // echo ($category . " " . $publish);
 
                     /* create a prepared statement */
@@ -193,24 +192,28 @@
                     }
                 }
             } else {
-                $stmt = "select id,story,title,publish,image,rate,viewed,created from posts ";
-                $result = $mysqli->query($stmt);
-
+                $text = $_GET['search'];
+                $stmta = "select * from posts where story like '%$text%';";
+                $results = $mysqli->query($stmta);
+                $data = [];
                 // Fetch all
-                $data = $result->fetch_all(MYSQLI_ASSOC);
+                if ($results) {
+                    $data = $results->fetch_all(MYSQLI_ASSOC);
 
-                // Free result set
-                $result->free_result();
+                    // Free result set
+                    $results->free_result();
 
-                $mysqli->close();
-                // print_r($data) . 'hello';
-                $jdata = json_encode($data);
+                    $mysqli->close();
+                    // print_r($data) . 'hello';
+                    $jdata = json_encode($data);
+                }
             }
             foreach ($data as $row) {
             ?>
                 <div class='col-md-4 mb-5'>
                     <div class='card h-100'>
                         <div class='card-body'>
+                            <img src="admin/images/<?= $row['image'] ?>" width='100' height='100'>
                             <h2 class='card-title'><?= $row['title'] ?></h2>
                             <p class='card-text'><?= $row['story'] ?></p>
                         </div>

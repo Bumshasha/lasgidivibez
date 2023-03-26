@@ -31,13 +31,14 @@
                             $servername = "localhost";
                             $dbname = 'lasgidi';
                             $username = "root";
-                            $password = "Bumshaha@gidi";
+                            $password = "@Edmund123";
 
                             $mysqli = new mysqli($servername, $username, $password, $dbname);
 
                             // collect value of input field
 
                             $wid = $_SESSION['id'];
+                            echo $S_SESSION['fullname'];
                             /* create a prepared statement */
                             $stmt = "select id,story,title,publish,created from posts where writer_id=$wid";
                             $result = $mysqli->query($stmt);
@@ -158,7 +159,7 @@
                                         $servername = "localhost";
                                         $dbname = 'lasgidi';
                                         $username = "root";
-                                        $password = "Bumshaha@gidi";
+                                        $password = "@Edmund123";
 
                                         $mysqli = new mysqli($servername, $username, $password, $dbname);
                                         /* create a prepared statement */
