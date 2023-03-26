@@ -22,6 +22,7 @@
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header bg-white">
                                     <h3 class="text-center font-weight-light  my-4">Login</h3>
+                                    <h4>Welcome to Lagidi Vibez</h4>
                                 </div>
                                 <div class="card-body">
                                     <?php
@@ -32,7 +33,7 @@
                                     $servername = "localhost";
                                     $dbname = 'lasgidi';
                                     $username = "root";
-                                    $password = "@Edmund123";
+                                    $password = "Bumshaha@gidi";
 
                                     $mysqli = new mysqli($servername, $username, $password, $dbname);
                                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,11 +71,11 @@
                                                 $_SESSION['fullname'] = $data[0][3] . ' ' . $data[0][4];
                                                 $_SESSION['id'] = $data[0][0];
                                                 $_SESSION['role'] = $data[0][5];
-                                                echo ($_SESSION['fullname']);
+                                                // echo ($_SESSION['fullname']);
                                                 header('Location: index.php');
                                             } else {
                                                 $response = json_encode(array("message" =>  "failed to login", "status" => 404));
-                                                echo ($response);
+                                                echo ("Wrong credentials");
                                             }
                                         }
                                         // }

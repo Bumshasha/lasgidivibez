@@ -25,8 +25,10 @@
 
 
                     <?php
-                    if ($_SESSION['fullname']) {
-                        echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                    try {
+                        $fullname = isset($_SESSION['fullname']) ? $_SESSION['fullname'] : null;
+                        if ($fullname) {
+                            echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 About
@@ -63,11 +65,16 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
+                             <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                         </form>
+
                         </li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="admin/index.php">Dashboard</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="admin/logout.php">Logout</a></li>';
-                    } else {
-                        echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
+                            echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
+                        } else {
+                            echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 About
@@ -104,9 +111,15 @@
                                 </li>
                                 <li><a class="dropdown-item" href="category.php?category=events">Events this weekend</a></li>
                             </ul>
+                            
+                        </form>
+
                         </li>';
-                        echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Register</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/register.php">Become a writer</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link " aria-current="page" href="./admin/login.php">Login</a></li>';
+                            echo ' <form action="allStories.php" class="d-flex" role="search"> <li> <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></li>';
+                        }
+                    } catch (\Throwable $th) {
                     }
                     ?>
 
