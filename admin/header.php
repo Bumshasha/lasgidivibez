@@ -83,7 +83,7 @@ if (!$_SESSION['fullname']) {
                         } ?>
                         <a class="nav-link collapsed" href="../index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Frontend
+                            Home
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <a class="nav-link collapsed" href="../logout.php">

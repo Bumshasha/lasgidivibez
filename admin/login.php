@@ -82,7 +82,7 @@
                                                     header('Location: index.php');
                                                 } else {
                                                     $response = json_encode(array("message" =>  "failed to login", "status" => 404));
-                                                    echo ("Wrong credentials");
+                                                    echo ("Wrong email or password");
                                                 }
                                             }
                                             // }

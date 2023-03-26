@@ -70,7 +70,7 @@
                             echo '<form action="allStories.php"  role="search">
                         <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                          </form>';
-                            echo '<li class="nav-item"><a class="nav-link" href="index.php">Dashboard</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="admin/index.php">Dashboard</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';
                         } else {
                             echo '<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
