@@ -33,7 +33,7 @@
                                     $servername = "localhost";
                                     $dbname = 'lasgidi';
                                     $username = "root";
-                                    $password = "@Edmund123";
+                                    $password = "";
                                     try {
                                         $mysqli = new mysqli($servername, $username, $password, $dbname);
                                     } catch (\Throwable $th) {

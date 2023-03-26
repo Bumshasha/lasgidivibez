@@ -134,7 +134,7 @@
             $servername = "localhost";
             $dbname = 'lasgidi';
             $username = "root";
-            $password = "@Edmund123";
+            $password = "";
 
             $mysqli = new mysqli($servername, $username, $password, $dbname);
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -155,7 +155,7 @@
                     $servername = "localhost";
                     $dbname = 'lasgidi';
                     $username = "root";
-                    $password = "@Edmund123";
+                    $password = "";
 
                     $mysqli = new mysqli($servername, $username, $password, $dbname);
                     /* create a prepared statement */
