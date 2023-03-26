@@ -38,7 +38,7 @@
                             // collect value of input field
 
                             $wid = $_SESSION['id'];
-                            echo $S_SESSION['fullname'];
+                            // echo $_SESSION['fullname'];
                             /* create a prepared statement */
                             $stmt = "select id,story,title,publish,created from posts where writer_id=$wid";
                             $result = $mysqli->query($stmt);

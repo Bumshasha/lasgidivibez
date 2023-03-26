@@ -65,6 +65,7 @@
                                                 /* execute query */
                                                 if ($stmt->execute()) {
                                                     echo "Sign up successful";
+                                                    sleep(2);
                                                     header('Location: login.php');
                                                 } else {
                                                     echo 'Error: failed to register';

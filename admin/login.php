@@ -79,6 +79,9 @@
                                                     $_SESSION['id'] = $data[0]['id'];
                                                     $_SESSION['role'] = $data[0]['role'];
                                                     // echo ($_SESSION['fullname']);
+                                                    echo ("Login successful");
+                                                    sleep(2);
+
                                                     header('Location: index.php');
                                                 } else {
                                                     $response = json_encode(array("message" =>  "failed to login", "status" => 404));

@@ -75,7 +75,7 @@ if (!$_SESSION['fullname']) {
                         </a>
                         <div class='collapse' id='collapseAdmin' aria-labelledby='headingOne' data-bs-parent='#sidenavAccordion'>
                             <nav class='sb-sidenav-menu-nested nav'>
-                                <a class='nav-link' href='auditPosts.php'>Audit Posts</a>
+                                <a class='nav-link' href='adminAuditPosts.php'>Audit Posts</a>
                                 <a class='nav-link' href='comments.php'>Audit Comments</a>
                                 <a class='nav-link' href='users.php'>Audit Users</a>
                             </nav>
