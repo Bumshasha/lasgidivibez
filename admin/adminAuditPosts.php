@@ -230,7 +230,7 @@
                     </div>
                     <div class="modal-body">
                         You are deleting post
-                        <form action="deletePost.php" method="GET">
+                        <form action="adminDeletePost.php" method="GET">
 
                             <div class="form-floating mb-3">
 

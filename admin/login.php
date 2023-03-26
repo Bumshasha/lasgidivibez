@@ -73,14 +73,14 @@
 
                                                 $jdata = json_encode($data);
                                                 if ($data[0]['password'] === md5($passw)) {
+                                                    echo ("Login successful");
 
                                                     // $response = json_encode(array("message" => "successfully logged in", "status" => 200, "data" => array("fullname" => $data[0][3] . ' ' . $data[0][4], "role" =>  $data[0][6], "id" => $$data[0][0])));
                                                     $_SESSION['fullname'] = $data[0]['firstname'] . ' ' . $data[0]['lastname'];
                                                     $_SESSION['id'] = $data[0]['id'];
                                                     $_SESSION['role'] = $data[0]['role'];
                                                     // echo ($_SESSION['fullname']);
-                                                    echo ("Login successful");
-                                                    sleep(2);
+                                                    sleep(3);
 
                                                     header('Location: index.php');
                                                 } else {

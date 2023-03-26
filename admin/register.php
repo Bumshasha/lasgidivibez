@@ -68,7 +68,7 @@
                                                     sleep(2);
                                                     header('Location: login.php');
                                                 } else {
-                                                    echo 'Error: failed to register';
+                                                    echo 'Error: failed to register kindly ';
                                                 }
                                             }
                                         }
