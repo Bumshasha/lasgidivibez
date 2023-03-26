@@ -31,7 +31,7 @@
                             $servername = "localhost";
                             $dbname = 'lasgidi';
                             $username = "root";
-                            $password = "";
+                            $password = "@Edmund123";
 
                             $mysqli = new mysqli($servername, $username, $password, $dbname);
 
@@ -105,7 +105,7 @@
                                 // Get file extension
 
                                 // Allowed file types
-                                $allowd_file_ext = array("jpg", "jpeg", "png", "mp4");
+                                $allowd_file_ext = array("jpg", "jpeg", "png", "mp4", "webp");
 
 
 
@@ -151,7 +151,7 @@
                                             $servername = "localhost";
                                             $dbname = 'lasgidi';
                                             $username = "root";
-                                            $password = "";
+                                            $password = "@Edmund123";
 
                                             $mysqli = new mysqli($servername, $username, $password, $dbname);
                                             /* create a prepared statement */

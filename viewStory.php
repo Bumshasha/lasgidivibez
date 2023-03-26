@@ -134,49 +134,49 @@
             $servername = "localhost";
             $dbname = 'lasgidi';
             $username = "root";
-            $password = "";
+            $password = "@Edmund123";
 
             $mysqli = new mysqli($servername, $username, $password, $dbname);
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            try {
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                $comment = $_POST['comment'];
-                $name = $_POST['name'];
-                $postid = $_POST['postid'];
-                if (
-                    empty($category) && empty($name)
-                ) {
-                    echo "select at least one filter";
-                } else {
-
-
-                    // echo ($category . " " . $publish);
-
-                    /* create a prepared statement */
-                    $servername = "localhost";
-                    $dbname = 'lasgidi';
-                    $username = "root";
-                    $password = "";
-
-                    $mysqli = new mysqli($servername, $username, $password, $dbname);
-                    /* create a prepared statement */
-                    $stmt = $mysqli->prepare("INSERT INTO comments (`comment`,`name`,`post_title`,`postid`) VALUES (?,?,?,?)");
-
-                    /* bind parameters for markers */
-                    $stmt->bind_param("ssss", $comment, $name, $title, $postid);
-
-                    /* execute query */
-
-
-                    if ($stmt->execute()) {
-                        $stmt->close();
-                        echo "Comment created successful";
-                        header("Location: viewStory.php?id=" . $postid);
+                    $comment = $_POST['comment'];
+                    $name = $_POST['name'];
+                    $postid = $_POST['postid'];
+                    if (
+                        empty($category) && empty($name)
+                    ) {
+                        echo "select at least one filter";
                     } else {
-                        echo
-                        $stmt->error;
+
+
+                        // echo ($category . " " . $publish);
+
+                        /* create a prepared statement */
+                        $servername = "localhost";
+                        $dbname = 'lasgidi';
+                        $username = "root";
+                        $password = "@Edmund123";
+
+                        $mysqli = new mysqli($servername, $username, $password, $dbname);
+                        /* create a prepared statement */
+                        $stmt = $mysqli->prepare("INSERT INTO comments (`comment`,`name`,`post_title`,`postid`) VALUES (?,?,?,?)");
+
+                        /* bind parameters for markers */
+                        $stmt->bind_param("ssss", $comment, $name, $title, $postid);
+
+                        /* execute query */
+
+
+                        if ($stmt->execute()) {
+                            $stmt->close();
+                            echo "Comment created successful";
+                        } else {
+                            echo
+                            $stmt->error;
+                        }
                     }
                 }
-            } else {
                 $id = $_GET['id'];
                 $stmt = "select id,story,title,publish,image,rate,viewed,created from posts where id = $id ";
                 $result = $mysqli->query($stmt);
@@ -210,13 +210,16 @@
 
 
                 if ($stmt3->execute()) {
+
                     $mysqli->close();
                     // echo "Post updated successful";
                 } else {
                     echo
                     $stmt3->error;
                 }
+            } catch (\Throwable $th) {
             }
+
             echo "
            <div class='col-md-10 mt-10 mb-5'>
                     <div class='card col-md-12 h-100 d-flex align-items-center'>
@@ -271,7 +274,7 @@
                 </div>
             </div>
         <?php } ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+        <form action="" method="POST">
 
             <div class="row col-md-12">
                 <div class="form-floating mb-3">
@@ -305,7 +308,7 @@
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
     <script>
-        const pullData = async (e) => {
+        const addComment = async (e) => {
             e.preventDefault()
             var cat = document.getElementById('category').value
             var publish = document.getElementById('publish').value
@@ -322,7 +325,7 @@
             var postiamge = document.getElementById('cards').outerHTML = data;
 
         }
-        pullData()
+        addComment()
     </script>
 </body>
 
